@@ -1,6 +1,8 @@
 #ifndef EXP_H
 #define EXP_H
 
+#include <stdio.h>
+
 typedef enum {
     // Palavras reservadas
     TOK_MAIN, TOK_INICIO, TOK_FIM, TOK_INT, TOK_CHAR, TOK_FLOAT,

@@ -1,23 +1,47 @@
+#
+# Makefile para o projeto do Compilador
+#
+
+# Compilador e flags
 CC = gcc
+CFLAGS = -Wall -g -I.
 
-CFLAGS = -Wall -g
+# Arquivos fonte
+SRCS = exp.c \
+       lexico/lexico.c \
+       lexico/tabela_transicao.c \
+       tabela_simbolos/tabela_simbolos.c
 
-TARGET = analisador
+# Arquivos objeto (gerados a partir dos fontes)
+OBJS = $(SRCS:.c=.o)
 
-SOURCES = exp.c lex.yy.c tabela_simbolos.c
+# Nome do executável
+EXEC = compilador
 
-FLEX = flex
+# Alvo principal: compila o projeto
+all: $(EXEC)
 
-all: $(TARGET)
+# Regra para linkar os arquivos objeto e criar o executável
+$(EXEC): $(OBJS)
+	$(CC) $(CFLAGS) -o $(EXEC) $(OBJS)
 
-$(TARGET): $(SOURCES)
-	$(CC) $(CFLAGS) -o $(TARGET) $(SOURCES)
+# Regra para compilar os arquivos fonte (.c) em arquivos objeto (.o)
+# O -I. é adicionado para que os includes como "exp.h" sejam encontrados
+# a partir do diretório raiz do projeto.
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
-lex.yy.c: exp.lex exp.h
-	$(FLEX) -o lex.yy.c exp.lex
-
-run: all
-	./$(TARGET) teste.txt
-
+# Alvo para limpar os arquivos gerados (objetos e executável)
 clean:
-	rm -f $(TARGET) lex.yy.c *.o
+	rm -f $(OBJS) $(EXEC)
+
+# Alvo para executar o compilador com o arquivo de teste correto
+run: all
+	./$(EXEC) testeCorreto.txt
+
+# Alvo para executar o compilador com o arquivo de teste com erros
+run_error: all
+	./$(EXEC) testeErrado.txt
+
+# Phony targets não representam arquivos
+.PHONY: all clean run run_error

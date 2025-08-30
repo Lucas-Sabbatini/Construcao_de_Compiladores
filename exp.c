@@ -2,54 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include "exp.h"
-#include "tabela_simbolos.h"
+#include "tabela_simbolos/tabela_simbolos.h"
 
-Token* criar_token(nome_token nome, const char* atributo, int linha, int coluna) {
-    if (nome == TOK_ERROR) {
-        fprintf(stderr, "Erro Léxico na Linha %d, Coluna %d: Caractere(s) inesperado(s) '%s'\n", 
-                linha, coluna, atributo);
-        exit(EXIT_FAILURE);
-    }
-
-    Token* novo_token = (Token*) malloc(sizeof(Token));
-    if (novo_token == NULL) {
-        fprintf(stderr, "Erro de alocação de memória para o token.\n");
-        exit(EXIT_FAILURE);
-    }
-   
-    novo_token->nome = nome;
-    novo_token->atributo = strdup(atributo);
-    novo_token->linha = linha;
-    novo_token->coluna = coluna;
-    if (nome == CONST_CHAR || nome == CONST_FLOAT || nome == CONST_INT || nome == TOK_ID ){
-        switch (nome)
-        {
-        case CONST_INT:
-            int vali = atoi(atributo);
-            install(novo_token->atributo, novo_token->nome, &vali, 1);
-            break;
-        case CONST_FLOAT:
-            float valf = (float) atof(atributo);
-            install(novo_token->atributo, novo_token->nome, &valf, 2);
-            break;
-        case CONST_CHAR:
-            char valc = atributo[1];
-            install(novo_token->atributo, novo_token->nome, &valc, 3);
-            break;
-        default:
-            install(novo_token->atributo, novo_token->nome, NULL, -1);
-            break;
-        }
-    }
-
-    if (novo_token->atributo == NULL) {
-        fprintf(stderr, "Erro de alocação de memória para o atributo.\n");
-        free(novo_token);
-        exit(EXIT_FAILURE);
-    }
-    
-    return novo_token;
-}
+FILE *yyin;
 
 const char* token_nome_string(nome_token nome) {
     switch (nome) {
