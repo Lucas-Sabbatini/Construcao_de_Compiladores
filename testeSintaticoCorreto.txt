@@ -1,0 +1,23 @@
+main ExemploSimples ()
+inicio
+    /*
+      Declaracoes de variaveis.
+    */
+    resultado, contador -> int;
+    continuar -> char;
+
+    /*
+      Inicio dos comandos.
+      Atribuicao simples.
+    */
+    contador = 1;
+    resultado = contador * 10;
+    continuar = 'S';
+
+    /*
+      Um comando de selecao.
+    */
+    caso (resultado > 5) entao
+        contador = 0;
+
+fim
