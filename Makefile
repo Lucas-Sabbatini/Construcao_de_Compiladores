@@ -1,38 +1,29 @@
 CC = gcc
-CFLAGS = -Wall -g
-
+CFLAGS = -Wall -g -I. 
 TARGET = analisador
 
-SOURCES = exp.c parser.c tabela_simbolos.c token_string.c
+SOURCES = $(wildcard *.c) $(wildcard lexico/*.c) $(wildcard tabela_simbolos/*.c)
 
-FLEX = flex
+OBJECTS = $(SOURCES:.c=.o)
+
+DEPS = $(wildcard *.h) $(wildcard lexico/*.h) $(wildcard tabela_simbolos/*.h)
 
 all: $(TARGET)
 
-$(TARGET): $(SOURCES) lex.yy.c
-	$(CC) $(CFLAGS) -o $(TARGET) $(SOURCES) lex.yy.c
+$(TARGET): $(OBJECTS)
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJECTS)
 
-lex.yy.c: exp.lex exp.h
-	$(FLEX) -o lex.yy.c exp.lex
-
-exp.o: exp.c exp.h parser.h tabela_simbolos.h
-	$(CC) $(CFLAGS) -c exp.c
-
-parser.o: parser.c parser.h exp.h
-	$(CC) $(CFLAGS) -c parser.c
-
-tabela_simbolos.o: tabela_simbolos.c tabela_simbolos.h exp.h
-	$(CC) $(CFLAGS) -c tabela_simbolos.c
-
-token_string.o: token_string.c exp.h parser.h
-	$(CC) $(CFLAGS) -c token_string.c
-
-.PHONY: run clean
+%.o: %.c $(DEPS)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 run: all
 	./$(TARGET) testeCorreto.txt
 
+run_sintatico: all
+	./$(TARGET) testeSintaticoCorreto.txt
+
+run_errado: all
+	./$(TARGET) testeErrado.txt
+
 clean:
-	rm -f $(TARGET) lex.yy.c *.o
-
-
+	rm -f $(TARGET) $(OBJECTS)

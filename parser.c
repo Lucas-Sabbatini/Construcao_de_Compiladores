@@ -35,6 +35,7 @@ ASTNode *parse_Constante();
 void fill_buffer() {
     for (int i = 0; i < LOOKAHEAD_BUFFER_SIZE; i++) {
         lookahead_buffer[i] = yylex();
+        printf("%s\n",lookahead_buffer[i]->atributo);
     }
 }
 

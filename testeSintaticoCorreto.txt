@@ -1,21 +1,21 @@
 main ExemploSimples ()
 inicio
     /*
-      Declarações de variáveis.
+      Declaracoes de variaveis.
     */
     resultado, contador -> int;
     continuar -> char;
 
     /*
-      Início dos comandos.
-      Atribuição simples.
+      Inicio dos comandos.
+      Atribuicao simples.
     */
     contador = 1;
     resultado = contador * 10;
     continuar = 'S';
 
     /*
-      Um comando de seleção.
+      Um comando de selecao.
     */
     caso (resultado > 5) entao
         contador = 0;
