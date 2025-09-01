@@ -3,6 +3,7 @@
 #include <string.h>
 #include "exp.h"
 #include "tabela_simbolos.h"
+#include "parser.h" 
 
 Token* criar_token(nome_token nome, const char* atributo, int linha, int coluna) {
     if (nome == TOK_ERROR) {
@@ -51,47 +52,7 @@ Token* criar_token(nome_token nome, const char* atributo, int linha, int coluna)
     return novo_token;
 }
 
-const char* token_nome_string(nome_token nome) {
-    switch (nome) {
-        case TOK_MAIN: return "MAIN";
-        case TOK_INICIO: return "INICIO";
-        case TOK_FIM: return "FIM";
-        case TOK_INT: return "INT";
-        case TOK_CHAR: return "CHAR";
-        case TOK_FLOAT: return "FLOAT";
-        case TOK_CASO: return "CASO";
-        case TOK_ENTAO: return "ENTAO";
-        case TOK_SENAO: return "SENAO";
-        case TOK_ENQUANTO: return "ENQUANTO";
-        case TOK_FACA: return "FACA";
-        case TOK_REPITA: return "REPITA";
-        case TOK_ATE: return "ATE";
-        case TOK_ID: return "ID";
-        case TOK_RELOP: return "RELOP";
-        case TOK_ARTOP: return "ARTOP";
-        case CONST_INT: return "CONST_INT";
-        case CONST_FLOAT: return "CONST_FLOAT";
-        case CONST_CHAR: return "CONST_CHAR";
-        case TOK_ASSIGN: return "ASSIGN";
-        case TOK_EOF: return "EOF";
-        case ABRE_PARENT: return "ABRE_PARENT";
-        case FECHA_PARENT: return "FECHA_PARENT";
-        case PONTO_VIRGULA: return "PONTO_VIRGULA";
-        case VIRGULA: return "VIRGULA";
-        case SETA: return "SETA";
-        case TOK_ERROR: return "ERROR";
-        default: return "UNKNOWN";
-    }
-}
-
-void imprime_token(Token* token) {
-    if (token == NULL) return;
-    printf("| %-15s | %-25s | %5d | %6d |\n", 
-           token_nome_string(token->nome), 
-           token->atributo, 
-           token->linha, 
-           token->coluna);
-}
+// A função token_nome_string foi movida para exp.h
 
 int main(int argc, char **argv) {
     if (argc < 2) {
@@ -99,39 +60,30 @@ int main(int argc, char **argv) {
         return 1;
     }
 
-    yyin = fopen(argv[1], "r");
-    if (!yyin) {
+    FILE *input_file = fopen(argv[1], "r");
+    if (!input_file) {
         fprintf(stderr, "Erro: Não foi possível abrir o arquivo '%s'\n", argv[1]);
         return 1;
     }
 
-    printf("Iniciando análise léxica do arquivo: %s\n\n", argv[1]);
+    printf("Iniciando análise sintática do arquivo: %s\n\n", argv[1]);
 
-    Token *token_atual;
-    init_symbol_table();
+    init_symbol_table(); // Inicializa a tabela de símbolos
+    init_parser(input_file); // Inicializa o analisador sintático com o arquivo de entrada
 
-    printf("+-----------------+---------------------------+-------+--------+\n");
-    printf("| TOKEN           | ATRIBUTO                  | LINHA | COLUNA |\n");
-    printf("+-----------------+---------------------------+-------+--------+\n");
+    ASTNode *root = parse_Programa(); // Inicia a análise sintática
 
-    while (1) {
-        token_atual = yylex();
-        imprime_token(token_atual);
-
-        if (token_atual == NULL || token_atual->nome == TOK_EOF) {
-            if (token_atual != NULL) {
-                free(token_atual->atributo);
-                free(token_atual);
-            }
-            break; 
-        }
-
-        free(token_atual->atributo);
-        free(token_atual);
+    if (root != NULL) {
+        printf("Análise Sintática concluída com sucesso! Árvore de derivação:\n");
+        print_ast(root, 0); // Imprime a árvore para verificação
+        free_ast(root); // Libera a memória da AST
+    } else {
+        printf("Análise Sintática falhou.\n");
     }
 
-
-    display_symbol_table();
-    fclose(yyin);
+    // display_symbol_table(); // Opcional: exibir tabela de símbolos após a análise
+    fclose(input_file);
     return 0;
 }
+
+

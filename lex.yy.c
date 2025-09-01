@@ -366,16 +366,16 @@ struct yy_trans_info
 	};
 static const flex_int16_t yy_accept[96] =
     {   0,
-        0,    0,   31,   29,    1,    3,   29,   29,   24,   25,
-       19,   27,   19,   29,   19,   21,   26,   18,   17,   18,
-       20,   20,   20,   20,   20,   20,   20,   20,   20,    1,
-       18,    0,   28,   22,    0,    0,   21,    0,   20,   20,
-       20,   20,   20,   20,   20,   20,   20,   20,   20,   20,
-       23,    0,    0,    0,   22,    0,   22,   16,   20,   20,
-       20,   20,   20,    6,   20,   20,    7,   20,   20,   20,
-        0,   22,    2,   10,    8,   20,   20,   14,   20,   20,
-        4,   20,   20,   20,   11,    9,   20,   20,   12,   20,
-        5,   15,   20,   13,    0
+        0,    0,   31,   29,    1,    3,   29,   29,   25,   26,
+       20,   28,   20,   29,   20,   22,   27,   18,   19,   18,
+       21,   21,   21,   21,   21,   21,   21,   21,   21,    1,
+       18,    0,   17,   23,    0,    0,   22,    0,   21,   21,
+       21,   21,   21,   21,   21,   21,   21,   21,   21,   21,
+       24,    0,    0,    0,   23,    0,   23,   16,   21,   21,
+       21,   21,   21,    6,   21,   21,    7,   21,   21,   21,
+        0,   23,    2,   10,    8,   21,   21,   14,   21,   21,
+        4,   21,   21,   21,   11,    9,   21,   21,   12,   21,
+        5,   15,   21,   13,    0
 
     } ;
 
@@ -518,7 +518,8 @@ int yycolumn = 1;
 #define YY_USER_ACTION yycolumn = yycolumn + yyleng;
 #define YY_DECL Token* yylex(void)
 #line 521 "lex.yy.c"
-#line 522 "lex.yy.c"
+/* Definições de padrões */
+#line 523 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -735,10 +736,10 @@ YY_DECL
 		}
 
 	{
-#line 29 "exp.lex"
+#line 27 "exp.lex"
 
 
-#line 742 "lex.yy.c"
+#line 743 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -797,162 +798,162 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 31 "exp.lex"
+#line 29 "exp.lex"
 { /* Ignora */ }
 	YY_BREAK
 case 2:
 /* rule 2 can match eol */
 YY_RULE_SETUP
-#line 32 "exp.lex"
+#line 30 "exp.lex"
 { /* Ignora */ }
 	YY_BREAK
 case 3:
 /* rule 3 can match eol */
 YY_RULE_SETUP
-#line 33 "exp.lex"
+#line 31 "exp.lex"
 { yylineno++; yycolumn = 1; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 35 "exp.lex"
-{ return criar_token(TOK_MAIN, "none", yylineno, yycolumn - yyleng); }
+#line 33 "exp.lex"
+{ return criar_token(TOK_MAIN, "main", yylineno, yycolumn - yyleng); }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 36 "exp.lex"
-{ return criar_token(TOK_INICIO, "none", yylineno, yycolumn - yyleng); }
+#line 34 "exp.lex"
+{ return criar_token(TOK_INICIO, "inicio", yylineno, yycolumn - yyleng); }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 37 "exp.lex"
-{ return criar_token(TOK_FIM, "none", yylineno, yycolumn - yyleng); }
+#line 35 "exp.lex"
+{ return criar_token(TOK_FIM, "fim", yylineno, yycolumn - yyleng); }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 38 "exp.lex"
-{ return criar_token(TOK_INT, "none", yylineno, yycolumn - yyleng); }
+#line 36 "exp.lex"
+{ return criar_token(TOK_INT, "int", yylineno, yycolumn - yyleng); }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 39 "exp.lex"
-{ return criar_token(TOK_CHAR, "none", yylineno, yycolumn - yyleng); }
+#line 37 "exp.lex"
+{ return criar_token(TOK_CHAR, "char", yylineno, yycolumn - yyleng); }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 40 "exp.lex"
-{ return criar_token(TOK_FLOAT, "none", yylineno, yycolumn - yyleng); }
+#line 38 "exp.lex"
+{ return criar_token(TOK_FLOAT, "float", yylineno, yycolumn - yyleng); }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 41 "exp.lex"
-{ return criar_token(TOK_CASO, "none", yylineno, yycolumn - yyleng); }
+#line 39 "exp.lex"
+{ return criar_token(TOK_CASO, "caso", yylineno, yycolumn - yyleng); }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 42 "exp.lex"
-{ return criar_token(TOK_ENTAO, "none", yylineno, yycolumn - yyleng); }
+#line 40 "exp.lex"
+{ return criar_token(TOK_ENTAO, "entao", yylineno, yycolumn - yyleng); }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 43 "exp.lex"
-{ return criar_token(TOK_SENAO, "none", yylineno, yycolumn - yyleng); }
+#line 41 "exp.lex"
+{ return criar_token(TOK_SENAO, "senao", yylineno, yycolumn - yyleng); }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 44 "exp.lex"
-{ return criar_token(TOK_ENQUANTO, "none", yylineno, yycolumn - yyleng); }
+#line 42 "exp.lex"
+{ return criar_token(TOK_ENQUANTO, "enquanto", yylineno, yycolumn - yyleng); }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 45 "exp.lex"
-{ return criar_token(TOK_FACA, "none", yylineno, yycolumn - yyleng); }
+#line 43 "exp.lex"
+{ return criar_token(TOK_FACA, "faca", yylineno, yycolumn - yyleng); }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 46 "exp.lex"
-{ return criar_token(TOK_REPITA, "none", yylineno, yycolumn - yyleng); }
+#line 44 "exp.lex"
+{ return criar_token(TOK_REPITA, "repita", yylineno, yycolumn - yyleng); }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 47 "exp.lex"
-{ return criar_token(TOK_ATE, "none", yylineno, yycolumn - yyleng); }
+#line 45 "exp.lex"
+{ return criar_token(TOK_ATE, "ate", yylineno, yycolumn - yyleng); }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 49 "exp.lex"
-{ return criar_token(TOK_ASSIGN, "none", yylineno, yycolumn - yyleng); }
+#line 47 "exp.lex"
+{ return criar_token(SETA, "->", yylineno, yycolumn - yyleng); }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 50 "exp.lex"
+#line 48 "exp.lex"
 { return criar_token(TOK_RELOP, yytext, yylineno, yycolumn - yyleng); }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 51 "exp.lex"
-{ return criar_token(TOK_ARTOP, yytext, yylineno, yycolumn - yyleng);}
+#line 49 "exp.lex"
+{ return criar_token(TOK_ASSIGN, "=", yylineno, yycolumn - yyleng); }
 	YY_BREAK
 case 20:
+YY_RULE_SETUP
+#line 50 "exp.lex"
+{ return criar_token(TOK_ARTOP, yytext, yylineno, yycolumn - yyleng); }
+	YY_BREAK
+case 21:
 YY_RULE_SETUP
 #line 52 "exp.lex"
 { return criar_token(TOK_ID, yytext, yylineno, yycolumn - yyleng); }
 	YY_BREAK
-case 21:
+case 22:
 YY_RULE_SETUP
 #line 53 "exp.lex"
 { return criar_token(CONST_INT, yytext, yylineno, yycolumn - yyleng); }
 	YY_BREAK
-case 22:
+case 23:
 YY_RULE_SETUP
 #line 54 "exp.lex"
 { return criar_token(CONST_FLOAT, yytext, yylineno, yycolumn - yyleng); }
 	YY_BREAK
-case 23:
-/* rule 23 can match eol */
+case 24:
+/* rule 24 can match eol */
 YY_RULE_SETUP
 #line 55 "exp.lex"
 { return criar_token(CONST_CHAR, yytext, yylineno, yycolumn - yyleng); }
 	YY_BREAK
-case 24:
-YY_RULE_SETUP
-#line 56 "exp.lex"
-{ return criar_token(ABRE_PARENT, "none", yylineno, yycolumn - yyleng); }
-	YY_BREAK
 case 25:
 YY_RULE_SETUP
 #line 57 "exp.lex"
-{ return criar_token(FECHA_PARENT, "none", yylineno, yycolumn - yyleng); }
+{ return criar_token(ABRE_PARENT, "(", yylineno, yycolumn - yyleng); }
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
 #line 58 "exp.lex"
-{ return criar_token(PONTO_VIRGULA, "none", yylineno, yycolumn - yyleng); }
+{ return criar_token(FECHA_PARENT, ")", yylineno, yycolumn - yyleng); }
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
 #line 59 "exp.lex"
-{ return criar_token(VIRGULA, "none", yylineno, yycolumn - yyleng); }
+{ return criar_token(PONTO_VIRGULA, ";", yylineno, yycolumn - yyleng); }
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
 #line 60 "exp.lex"
-{ return criar_token(SETA, "none", yylineno, yycolumn - yyleng); }
+{ return criar_token(VIRGULA, ",", yylineno, yycolumn - yyleng); }
 	YY_BREAK
 case YY_STATE_EOF(INITIAL):
 #line 62 "exp.lex"
-{ return criar_token(TOK_EOF, "none", yylineno, yycolumn); }
+{ return criar_token(TOK_EOF, "EOF", yylineno, yycolumn); }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 64 "exp.lex"
+#line 63 "exp.lex"
 { return criar_token(TOK_ERROR, yytext, yylineno, yycolumn - yyleng); }
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 66 "exp.lex"
+#line 65 "exp.lex"
 ECHO;
 	YY_BREAK
-#line 956 "lex.yy.c"
+#line 957 "lex.yy.c"
 
 	case YY_END_OF_BUFFER:
 		{
@@ -1955,5 +1956,8 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 66 "exp.lex"
+#line 65 "exp.lex"
+
+
+
 

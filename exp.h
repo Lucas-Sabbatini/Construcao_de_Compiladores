@@ -1,6 +1,8 @@
 #ifndef EXP_H
 #define EXP_H
 
+#include <stdio.h>
+
 typedef enum {
     // Palavras reservadas
     TOK_MAIN, TOK_INICIO, TOK_FIM, TOK_INT, TOK_CHAR, TOK_FLOAT,
@@ -43,3 +45,5 @@ const char* token_nome_string(nome_token nome);
 Token* criar_token(nome_token nome, const char* atributo, int linha, int coluna); 
 
 #endif //EXP_H
+
+
