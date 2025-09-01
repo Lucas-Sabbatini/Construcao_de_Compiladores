@@ -1,6 +1,5 @@
-
 #include <stdio.h>
-#include "parser.h"
+#include "sintatico/parser.h"
 
 // Função para retornar o nome do token como string (para depuração e mensagens de erro)
 const char* token_nome_string(nome_token nome) {

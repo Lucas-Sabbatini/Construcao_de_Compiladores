@@ -2,11 +2,9 @@ CC = gcc
 CFLAGS = -Wall -g -I. 
 TARGET = analisador
 
-SOURCES = $(wildcard *.c) $(wildcard lexico/*.c) $(wildcard tabela_simbolos/*.c)
-
+SOURCES = $(wildcard *.c) $(wildcard lexico/*.c) $(wildcard tabela_simbolos/*.c) $(wildcard sintatico/*.c)
 OBJECTS = $(SOURCES:.c=.o)
-
-DEPS = $(wildcard *.h) $(wildcard lexico/*.h) $(wildcard tabela_simbolos/*.h)
+DEPS = $(wildcard *.h) $(wildcard lexico/*.h) $(wildcard tabela_simbolos/*.h) $(wildcard sintatico/*.h)
 
 all: $(TARGET)
 
