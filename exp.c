@@ -3,7 +3,7 @@
 #include <string.h>
 #include "exp.h"
 #include "tabela_simbolos/tabela_simbolos.h"
-#include "parser.h" 
+#include "sintatico/parser.h" 
 
 
 FILE *yyin;
