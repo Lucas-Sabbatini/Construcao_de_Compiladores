@@ -2,9 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include "parser.h"
-
-// --- NOVO: Buffer de Lookahead ---
 #define LOOKAHEAD_BUFFER_SIZE 20
+
 Token *lookahead_buffer[LOOKAHEAD_BUFFER_SIZE];
 int current_token_index = 0;
 
@@ -35,7 +34,6 @@ ASTNode *parse_Constante();
 void fill_buffer() {
     for (int i = 0; i < LOOKAHEAD_BUFFER_SIZE; i++) {
         lookahead_buffer[i] = yylex();
-        printf("%s\n",lookahead_buffer[i]->atributo);
     }
 }
 

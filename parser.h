@@ -3,7 +3,6 @@
 
 #include "exp.h"
 
-// Definição dos tipos de nós da Árvore Sintática Abstrata (AST)
 typedef enum {
     NODE_PROGRAMA,
     NODE_BLOCO,
@@ -44,30 +43,26 @@ typedef enum {
     NODE_ERROR
 } NodeType;
 
-#define MAX_CHILDREN 10 // Número máximo de filhos para um nó da AST
+#define MAX_CHILDREN 10 
 
-// Definição da estrutura do nó da Árvore Sintática Abstrata (AST)
 typedef struct ASTNode {
     NodeType type;
-    Token *token; // Token associado a este nó (se for um nó folha ou um operador/identificador)
+    Token *token; 
     struct ASTNode *children[MAX_CHILDREN];
     int num_children;
     int line;
     int column;
 } ASTNode;
 
-// Funções auxiliares para a AST
 ASTNode *create_node(NodeType type, Token *token);
 void add_child(ASTNode *parent, ASTNode *child);
 void free_ast(ASTNode *node);
 void print_ast(ASTNode *node, int indent);
 
-// Funções do parser
 void init_parser(FILE *input_file);
 void report_syntax_error(const char *expected);
 void match(nome_token expected_type);
 
-// Funções para cada não-terminal da gramática (retornam nós da AST)
 ASTNode *parse_Programa();
 ASTNode *parse_Bloco();
 ASTNode *parse_DeclaracaoVars();
@@ -90,13 +85,12 @@ ASTNode *parse_TermoLinha(ASTNode *left_node);
 ASTNode *parse_Fator();
 ASTNode *parse_Constante();
 
-// Função principal do analisador sintático
 void analisar();
 
 extern FILE *yyin;
 Token *yylex(void);
 const char* token_nome_string(nome_token nome);
-const char* node_type_string(NodeType type); // Adicionada a declaração
+const char* node_type_string(NodeType type); 
 
 #endif // PARSER_H
 

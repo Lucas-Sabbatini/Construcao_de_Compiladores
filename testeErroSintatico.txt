@@ -1,0 +1,40 @@
+main ExemploCompleto ()
+inicio
+    /*
+      Declaracao de variaveis locais.
+      Sao declaradas variaveis dos tipos int, float e char.
+    */
+    fatorial, contador -> int;
+    limite, resultado -> float;
+    continuar -> char;
+
+    /*
+      Inicio da sequencia de comandos.
+      Atribuicoes iniciais para as variaveis.
+    */
+    limite = 10.0;
+    contador = 1;
+    fatorial = 1;
+    continuar = 'S';
+
+    /*
+      Comando de repeticao 'enquanto' para calcular o fatorial
+      de um numero (convertido para inteiro).
+    */
+    enquanto (contador < limite) faca
+    inicio
+        fatorial = fatorial * contador;
+        contador = contador + 1;
+    fim
+
+    caso (fatorial > 1000) entao
+        resultado = fatorial / 2.0
+    senao
+        resultado = fatorial * 1.0;
+
+    repita
+    inicio
+        resultado = resultado - 100.5;
+    fim
+    ate (resultado <= 100);
+fim

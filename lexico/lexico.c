@@ -119,8 +119,6 @@ Token* yylex(void) {
                         }
                     }
 
-                    if (token_reconhecido != TOK_ASSIGN)
-
                     return criar_token(token_reconhecido, lexema, linha_ini, coluna_ini);
                 } else {
                     if (isspace(c)) {
