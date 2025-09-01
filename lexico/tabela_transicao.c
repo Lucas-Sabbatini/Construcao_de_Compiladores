@@ -328,7 +328,7 @@ static void init_tabela(void) {
     //Estado 66
     for (int c = 0; c < ALFABETO; c++) {
             if (!isalnum(c) && c != '_') {
-                transicoes[66][c] = 30;
+                transicoes[66][c] = 67;
             }
         }
 
@@ -435,6 +435,11 @@ static void init_tabela(void) {
 
     // Estado 102
     transicoes[102]['='] = 103;
+    for (int c = 0; c < ALFABETO; c++) {
+        if (c != '=') {
+            transicoes[102][c] = 19;
+        }
+    }
 
     // Estado 104
     transicoes[104]['='] = 105;

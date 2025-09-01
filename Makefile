@@ -20,10 +20,10 @@ run: all
 	./$(TARGET) testeCorreto.txt
 
 run_sintatico: all
-	./$(TARGET) testeSintaticoCorreto.txt
+	./$(TARGET) testeErroSintatico.txt
 
 run_errado: all
-	./$(TARGET) testeErrado.txt
+	./$(TARGET) testeErroLexico.txt
 
 clean:
 	rm -f $(TARGET) $(OBJECTS)

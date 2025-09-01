@@ -1,0 +1,13 @@
+main ProgramaComErros ()
+inicio
+    valor_a -> int;
+    @invalido -> float;  
+    outra, variavel#2 -> char; 
+
+    valor_a = 1.2.3;    
+
+    caso (valor_a > 0) entao
+        valor_a = valor_a - 1
+    senao
+        continuar = 'A;    
+fim
