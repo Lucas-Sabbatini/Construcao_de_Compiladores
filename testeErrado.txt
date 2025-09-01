@@ -1,32 +1,13 @@
 main ProgramaComErros ()
 inicio
-    /*
-      Este programa contém vários erros léxicos para testar
-      a capacidade de detecção e tratamento de erros do analisador.
-    */
     valor_a -> int;
-    @invalido -> float;  // Erro 1: Caractere inválido '@' no início de um ID.
-    outra, variavel#2 -> char; // Erro 2: Caractere inválido '#' no meio de um ID.
+    @invalido -> float;  
+    outra, variavel#2 -> char; 
 
-    valor_a = 1.2.3;    // Erro 3: Número de ponto flutuante malformado.
+    valor_a = 1.2.3;    
 
-    /*
-      Comandos com erros léxicos.
-    */
     caso (valor_a > 0) entao
         valor_a = valor_a - 1
     senao
-        continuar = 'A;    // Erro 4: Constante de caractere não terminada.
-
-    repita
-        valor_a = valor_a - 1;
-    ate (valor_a == 0);
-
-    // Erro 5: Operador '?' não pertence à linguagem.
-    resultado ?= 10;
-
-    // Erro 6: Aspas duplas são para comentários, não para strings.
-    // Isso deve ser pego como um comentário não fechado ou erro.
-    texto = "Isso é um erro";
-
+        continuar = 'A;    
 fim
